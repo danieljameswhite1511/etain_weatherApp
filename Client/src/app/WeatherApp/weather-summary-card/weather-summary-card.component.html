@@ -1,0 +1,51 @@
+<div class="mt-1">
+  <h2>
+    {{weatherSummary.title}}
+  </h2>
+
+
+<div class="row mt-2" >
+<div class="col-sm" *ngFor="let weather of weatherSummary.consolidated_Weather">
+  <div class="card h-100">
+    <div class="card-header">
+      {{weather.applicable_date | date: 'fullDate' }}
+    </div>
+    <div class="card-body">
+      <div class="m-1">
+        <img src="{{weather.weather_state_image_url}}" alt="" style="width: 25px;">
+        {{weather.weather_state_name}}
+      </div>
+      <div>
+        <i class="fa fa-compass"></i>
+        <small> Wind:</small>
+        ({{weather.wind_direction_compass}})
+      </div>
+      <div>
+        <i class="fa fa-eye"></i>
+        <small> Visibility {{weather.visibility | number : '1.0-0'}}</small>
+      </div>
+      <div>
+        <i class="fa fa-percent"></i>
+        <small> Predictability {{weather.predictability}}</small>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div>
+        <i class="fa fa-thermometer-three-quarters"></i>
+        <small> Highs of: {{weather.max_temp | number : '1.0-0'}}</small>
+      </div>
+      <div>
+        <i class="fa fa-thermometer-half"></i>
+        <small> Lows of: {{weather.min_temp | number : '1.0-0'}}</small>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div *ngIf="weatherSummary.sources">
+  Sources
+  <span class="badge badge-primary ml-2" *ngFor="let source of weatherSummary.sources">
+    {{source.title}} <img src="{{source.faviconUrl}}" alt="" style="width: 15px;">
+  </span>
+</div>
+</div>

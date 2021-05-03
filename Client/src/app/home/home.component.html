@@ -1,0 +1,112 @@
+
+<div class="text-center pt-5">
+  <h2>Welcome to the Weather App!</h2>
+</div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card h-100">
+        <div class="card-header h-20">
+
+          <img class="mr-1" src="https://www.metaweather.com/static/img/weather/png/sn.png" alt="" style="width: 25px;">
+          <strong> My Ip Location</strong>
+        </div>
+        <div class="card-body h-100">
+          Your browser indicates that you are located near
+          <strong>{{ipLocation.city}}, {{ipLocation.state}}, {{ipLocation.postal}}, {{ipLocation.country_name}}
+            ({{ipLocation.country_code}})</strong>.
+          <br /><br />if this is not correct You can log in
+          <a href="/account/login">log in</a>
+          and set your default location.
+        </div>
+        <div class="card-footer h-100">
+          <ng-container *ngIf="locationsInfo">
+            <div>
+              Nearby forecasts: <br /> ({{locationsInfo.length}} locations found)<br /><br />
+              <div>
+                <span class="badge bg-secondary m-1" *ngFor="let location of locationsInfo">{{location.title}}</span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card h-100">
+        <div class="card-header h-20">
+          <img class="mr-1" src="https://www.metaweather.com/static/img/weather/png/s.png" alt="" style="width: 25px;">
+          <strong>Forecasts</strong>
+        </div>
+        <div class="card-body h-100">
+          <a href="/account/login">Sign in</a> to get access to get local weather forecasts,
+          based on your ip location, or update your preferences and set your preferred locations.
+          <div class="mt-2">
+            <strong>No Account?</strong> <a href="/account/register" class="btn btn-sm btn-info float-right">Register
+              Here</a>
+          </div>
+        </div>
+        <div class="card-footer h-100">
+          <strong>Sign in</strong>
+          <hr>
+          <app-login-small></app-login-small>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="card h-100">
+        <div class="card-header h-20">
+          <img class="mr-1" src="https://www.metaweather.com/static/img/weather/png/c.png" alt="" style="width: 25px;">
+          <strong>Search </strong>
+        </div>
+        <div class="card-body h-100">
+          Get access to local five day weather forecasts or search our repository to get forecasts across the globe.
+          <br/><br/>
+          Our simple search makes it easy to find weather forecast information
+        </div>
+        <div class="card-footer h-100">
+          Data sources include:
+          <div class="mt-1">
+            <span>
+              <img src="http://www.bbc.co.uk/favicon.ico" alt="" style="width: 25px;" class="m-0 p-0">
+            </span>
+            <small>
+              http://www.bbc.co.uk/weather/
+            </small>
+          </div>
+          <div class="mt-1">
+            <span>
+              <img src="http://forecast.io/favicon.ico" alt="" style="width: 25px;">
+            </span>
+            <small>
+              http://forecast.io/
+            </small>
+          </div>
+          <div class="mt-1">
+            <span>
+              <img src="http://www.metoffice.gov.uk/favicon.ico" alt="" style="width: 25px;">
+            </span>
+            <small>
+              http://www.metoffice.gov.uk/
+            </small>
+          </div>
+          <div class="mt-1">
+            <span>
+              <img src="http://openweathermap.org/favicon.ico" alt="" style="width: 25px;">
+            </span>
+            <small>
+              http://openweathermap.org/
+            </small>
+          </div>
+          <div class="mt-1">
+            <span>
+              <img src="https://www.wunderground.com/favicon.ico" alt="" style="width: 25px;">
+            </span>
+            <small>
+              https://www.wunderground.com/
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

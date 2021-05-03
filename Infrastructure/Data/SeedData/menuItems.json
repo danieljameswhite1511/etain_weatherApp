@@ -1,0 +1,18 @@
+[
+    {
+        "Id": 1,
+        "LinkText": "Forecasts",
+        "Url": "/weather",
+        "SortOrder": 1,
+        "MenuId": 1,
+        "ParentId": null
+    },
+    {
+        "Id": 2,
+        "LinkText": "Account",
+        "Url": "/account/settings",
+        "SortOrder": 1,
+        "MenuId": 1,
+        "ParentId": null
+    }
+]

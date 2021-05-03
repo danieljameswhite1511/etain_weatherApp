@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="#">The Weather App
+      <img src="https://www.metaweather.com/static/img/weather/png/sn.png" alt="" style="width: 25px;">
+    </a>
+
+    <ng-container *ngIf="currentUser$ | async">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-Login" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Hello {{(currentUser$ | async).displayName}}
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown-Login">
+            <a class="dropdown-item" href="/" (click)="logOut()" class="h">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+    <div class="collapse navbar-collapse justify-content-between float-right" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="currentUser$ | async">
+
+        <ng-container *ngFor="let menuItem of menuItems">
+
+          <ng-container *ngIf="menuItem.children.length > 0">
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-MainMenu" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{menuItem.linkText}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown-MainMenu">
+
+                <a *ngFor="let childMenuitem of menuItem.children" class="dropdown-item"
+                  href="{{childMenuitem.url}}">{{childMenuitem.linkText}}</a>
+              </div>
+            </li>
+
+          </ng-container>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="menuItem.children.length === 0" href="{{menuItem.url}}">{{menuItem.linkText}}</a>
+          </li>
+        </ng-container>
+      </ul>
+
+
+    </div>  <ng-container *ngIf="(currentUser$ | async)===null">
+        <div>
+          <a routerLink='/account/login' class="btn btn-sm btn-outline-primary m-1" href="#">Login</a>
+          <a routerLink='/account/register' class="btn btn-sm btn-outline-primary m-1" href="#">Sign up</a>
+        </div>
+
+      </ng-container>
+  </div>
+</nav>

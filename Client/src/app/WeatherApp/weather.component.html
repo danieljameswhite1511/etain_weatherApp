@@ -1,0 +1,18 @@
+<div class="pt-5 d-flex justify-content-center">
+  <h2>Find a weather forecast: </h2>
+
+</div>
+ <app-weather-search></app-weather-search>
+<hr>
+<div>
+  <h4>
+    Search results from near by:<br/> <small>(these are based on your IP address location)</small>
+  </h4>
+
+</div>
+
+<ng-container *ngFor="let weatherSummary of weatherSummaries">
+  <app-weather-summary-card [weatherSummary]="weatherSummary"></app-weather-summary-card>
+</ng-container>
+
+

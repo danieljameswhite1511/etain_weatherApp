@@ -1,0 +1,33 @@
+
+
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="submit()">
+    <div class="container d-flex justify-content-center">
+      <div class="row">
+      <div class="col-12 text-center">
+        <div class="input-group">
+          <input type="text" class="input" placeholder="Enter City Name" formControlName="search" [formGroup]="form" [form]="form"/>
+
+          <button class="btn btn-primary"> Search</button>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </form>
+
+  <ng-container *ngIf="weatherSummaries.length>1">
+    <ng-container *ngFor="let weatherSummary of weatherSummaries">
+      <app-weather-summary-card [weatherSummary]="weatherSummary" ></app-weather-summary-card>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="displayNoResultsFound">
+    <div>
+      No Results found
+    </div>
+  </ng-container>
+
+
+
+
